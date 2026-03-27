@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #111113;
+    color: #E2E8F0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #17171A;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A32;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333340;
+  }
+}
+
+@layer components {
+
+  /* ── Badges ─────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+  .badge-blue {
+    background-color: rgba(34,211,238, 0.12);
+    color: #22D3EE;
+    border: 1px solid rgba(34,211,238, 0.2);
+  }
+  .badge-green {
+    background-color: rgba(110, 191, 139, 0.12);
+    color: #6EBF8B;
+    border: 1px solid rgba(110, 191, 139, 0.2);
+  }
+  .badge-amber {
+    background-color: rgba(201, 169, 110, 0.12);
+    color: #C9A96E;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .badge-red {
+    background-color: rgba(196, 123, 123, 0.12);
+    color: #C47B7B;
+    border: 1px solid rgba(196, 123, 123, 0.2);
+  }
+  .badge-purple {
+    background-color: rgba(155, 142, 196, 0.12);
+    color: #9B8EC4;
+    border: 1px solid rgba(155, 142, 196, 0.2);
+  }
+  .badge-slate {
+    background-color: rgba(138, 155, 181, 0.12);
+    color: #8A9BB5;
+    border: 1px solid rgba(138, 155, 181, 0.2);
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 active:scale-95;
+    background-color: #22D3EE;
+    color: #111113;
+  }
+  .btn-primary:hover {
+    background-color: #67E8F9;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 active:scale-95;
+    background-color: #1E1E23;
+    color: #94A3B8;
+    border: 1px solid #2A2A32;
+  }
+  .btn-secondary:hover {
+    background-color: #25252B;
+    color: #E2E8F0;
+  }
+
+  /* ── Inputs ──────────────────────────────────────────────── */
+  .input-field {
+    @apply w-full rounded-lg px-3 py-2 text-sm transition-all duration-150 outline-none;
+    background-color: #1E1E23;
+    border: 1px solid #2A2A32;
+    color: #E2E8F0;
+  }
+  .input-field::placeholder {
+    color: #4A5568;
+  }
+  .input-field:focus {
+    border-color: rgba(34,211,238, 0.4);
+    box-shadow: 0 0 0 2px rgba(34,211,238, 0.08);
+  }
+
+  /* ── Cards ───────────────────────────────────────────────── */
+  .card {
+    background-color: #1E1E23;
+    border: 1px solid #2A2A32;
+    border-radius: 0.75rem;
+  }
+  .card-hover:hover {
+    background-color: #25252B;
+  }
+}
