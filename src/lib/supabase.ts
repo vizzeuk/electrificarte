@@ -191,6 +191,23 @@ function mapLeadRow(row: any, index: number): Lead {
   };
 }
 
+function mapStockRow(row: any, index: number): StockMaestro {
+  return {
+    id: String(row?.id ?? row?.uuid ?? `stock-${index}`),
+    created_at: (row?.created_at ?? row?.fecha_creacion ?? new Date().toISOString()) as string,
+    provider_id: (row?.provider_id ?? row?.proveedor_id ?? null) as string | null,
+    marca: (row?.marca ?? row?.brand ?? "") as string,
+    modelo: (row?.modelo ?? row?.model ?? "") as string,
+    anio: Number(row?.anio ?? row?.year ?? 0),
+    precio_msrp_clp: Number(row?.precio_msrp_clp ?? row?.precio ?? 0),
+    color: (row?.color ?? null) as string | null,
+    vin_codigo: (row?.vin_codigo ?? row?.vin ?? null) as string | null,
+    estado_vehiculo: (row?.estado_vehiculo ?? row?.estado ?? null) as string | null,
+    link_fotos: (row?.link_fotos ?? row?.fotos ?? null) as string[] | null,
+    notas_internas: (row?.notas_internas ?? row?.notas ?? null) as string | null,
+  };
+}
+
 // ─── Query functions ──────────────────────────────────────────────────────────
 
 export async function getLeads(): Promise<Lead[]> {
@@ -270,7 +287,7 @@ export async function getStock(): Promise<StockMaestro[]> {
       continue;
     }
 
-    const mapped = sortByDateDesc((data ?? []) as StockMaestro[]);
+    const mapped = sortByDateDesc((data ?? []).map((row, index) => mapStockRow(row, index)));
     if (!bestResult || mapped.length > bestResult.length) {
       bestResult = mapped;
     }
